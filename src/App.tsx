@@ -63,6 +63,7 @@ const App = () => {
     gameOver: false,
     wordGuessed: false,
   });
+  const [chosenWord, setChosenWord] = useState<string>("");
   // const [wordSet, setWordSet] = useState(new Set());
 
   const alphabet = [
@@ -94,14 +95,11 @@ const App = () => {
     "m",
   ];
 
-  const chosenWord = "house";
+  useEffect(() => {
+    setChosenWord(wordList[Math.floor(Math.random() * wordList.length)]);
+  }, []);
 
-  // useEffect(() => {
-  //   generateWordSet().then((wordSet) => {
-  //     // console.log(wordSet);
-  //     return setWordSet(wordSet);
-  //   });
-  // }, []);
+  console.log(chosenWord);
 
   const onSelectLetter = (KeyVal: string) => {
     const newBoard = [...board];
@@ -141,9 +139,6 @@ const App = () => {
     }
 
     if (chosenWord === currentWord) {
-      console.log(chosenWord);
-      console.log(currentWord);
-      console.log("Game Won");
       setGameOver({ gameOver: true, wordGuessed: true });
       return;
     }
