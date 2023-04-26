@@ -18,14 +18,29 @@ const App = styled.div`
 
   #correct {
     background-color: #528d4e;
+    color: white;
   }
 
   #almost {
     background-color: #b49f39;
+    color: white;
   }
 
   #error {
     background-color: #3a393c;
+    color: white;
+  }
+
+  #disabled {
+    background-color: #3a393c;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 3vh;
+    height: 6vh;
+    width: 5vh;
+    /* margin: 0.5vh; */
+    border-radius: 4px;
   }
 `;
 

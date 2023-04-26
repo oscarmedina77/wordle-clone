@@ -3,6 +3,7 @@ import { AppContext } from "../../App";
 
 interface KeyProps {
   KeyVal: string;
+  disabled: boolean;
 }
 
 export const Key = (props: KeyProps) => {
@@ -21,5 +22,9 @@ export const Key = (props: KeyProps) => {
       onSelectLetter(props.KeyVal);
     }
   };
-  return <div onClick={selectLetter}>{props.KeyVal}</div>;
+  return (
+    <div onClick={selectLetter} id={props.disabled ? "disabled" : ""}>
+      {props.KeyVal}
+    </div>
+  );
 };

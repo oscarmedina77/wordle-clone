@@ -4,7 +4,8 @@ import { Key } from "./Key";
 import s from "./Keyboard.styles";
 
 export const Keyboard = () => {
-  const { onDelete, onEnter, onSelectLetter } = useContext(AppContext);
+  const { onDelete, onEnter, onSelectLetter, disabledLetters } =
+    useContext(AppContext);
 
   const row1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const row2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
@@ -49,7 +50,7 @@ export const Keyboard = () => {
         {row1.map((key) => {
           return (
             <s.keyboardLetter>
-              <Key KeyVal={key} />
+              <Key KeyVal={key} disabled={disabledLetters.includes(key)} />
             </s.keyboardLetter>
           );
         })}
@@ -58,24 +59,24 @@ export const Keyboard = () => {
         {row2.map((key) => {
           return (
             <s.keyboardLetter>
-              <Key KeyVal={key} />
+              <Key KeyVal={key} disabled={disabledLetters.includes(key)} />
             </s.keyboardLetter>
           );
         })}
       </s.keyboardRow>
       <s.keyboardRow>
         <button>
-          <Key KeyVal="ENTER" />
+          <Key KeyVal="ENTER" disabled={false} />
         </button>
         {row3.map((key) => {
           return (
             <s.keyboardLetter>
-              <Key KeyVal={key} />
+              <Key KeyVal={key} disabled={disabledLetters.includes(key)} />
             </s.keyboardLetter>
           );
         })}
         <button>
-          <Key KeyVal="DEL" />
+          <Key KeyVal="DEL" disabled={false} />
         </button>
       </s.keyboardRow>
     </s.keyboardContainer>
